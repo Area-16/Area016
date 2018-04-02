@@ -16,30 +16,34 @@
       </v-container>
     </v-jumbotron>
     <hr>
-    <div class="newsfeed" :key="i" v-for="(post, i) of news">
-    <v-layout>
-      <v-flex xs12 sm8 offset-sm2>
-        <v-card >
-          <v-card-media :src="post.src"  height="400px"></v-card-media>
-          <v-divider></v-divider>
-          <v-card-title primary-title>
-            <div>
-              <h3 v-bind="title" class="headline mb-0"><b>{{ post.title }}</b></h3>
-              <div v-bind="description">{{ post.description }}</div>
-            </div>
-          </v-card-title>
-          <v-card-actions>
-            <v-btn color="orange">{{ btn1 }}</v-btn>
-            <v-btn exact :to="{ name: 'About' }" color="success">{{ btn2 }}</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
-    </v-layout>
+    <div v-if="news && news.length">
+      <div class="newsfeed" :key="i" v-for="(post, i) of news">
+      <v-layout>
+        <v-flex xs12 sm8 offset-sm2>
+          <v-card >
+            <v-card-media :src="post.src || 'https://media.gettyimages.com/photos/defocused-blurred-soft-abstract-background-blue-picture-id504916590?b=1&k=6&m=504916590&s=612x612&w=0&h=gbfY6TEors_b0qcYD5f2vuWzZFTSs9kQdxo6NAyIGSg='"  height="400px"></v-card-media>
+            <v-divider></v-divider>
+            <v-card-title primary-title>
+              <div>
+                <h3 v-bind="title" class="headline mb-0"><b>{{ post.title }}</b></h3>
+                <div v-bind="description">{{ post.description || post.body }}</div>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn color="orange">{{ btn1 }}</v-btn>
+              <v-btn exact :to="{ name: 'About' }" color="success">{{ btn2 }}</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
+      </div>
     </div>
   </article>
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
   data () {
     return {
@@ -68,6 +72,15 @@ export default {
       btn1: 'Share',
       btn2: 'Explore'
     }
+  },
+  created () {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(resp => {
+        this.news = [ ...this.news, ...resp.data]
+      })
+      .catch(err => {
+        this.errors = [ ...this.err ]
+      })
   }
 }
 </script>
