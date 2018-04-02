@@ -3,7 +3,7 @@
     <header id="menu">
       <v-toolbar color="grey lighten-4 black--text">
         <v-toolbar-title>
-          <v-btn :to="{ name: 'Index' }" id="brand-name" color="red"> <v-icon color="black">fas fa-terminal</v-icon> {{ title }} </v-btn>
+          <v-btn :to="{ name: 'Index' }" id="brand-name" color="red"> <v-icon color="black">fas fa-terminal</v-icon><b> {{ title }} </b></v-btn>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down" justify-space-around>
