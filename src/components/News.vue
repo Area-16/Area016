@@ -31,7 +31,7 @@
             </v-card-title>
             <v-card-actions>
               <v-btn color="orange">{{ btn1 }}</v-btn>
-              <v-btn exact :to="{ name: 'About' }" color="success">{{ btn2 }}</v-btn>
+              <v-btn exact color="success">{{ btn2 }}</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
