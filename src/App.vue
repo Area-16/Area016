@@ -57,9 +57,9 @@ export default {
           icon: 'fab fa-github',
           link: 'https://github.com/Area-16'
         },
-        {
-          icon: 'fab fa-js'
-        },
+        // {
+        //   icon: 'fab fa-js'
+        // },
         {
           icon: 'fab fa-linkedin',
           link: 'https://www.linkedin.com/in/dougtq'
@@ -68,9 +68,9 @@ export default {
           icon: 'fab fa-npm',
           link: 'https://npmjs.com/~dougtq'
         },
-        {
-          icon: 'fab fa-node-js'
-        }
+        // {
+        //   icon: 'fab fa-node-js'
+        // }
       ]
     }
   }
