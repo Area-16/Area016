@@ -1,5 +1,5 @@
 <template>
-  <div id="map">
+  <div id="contact">
     <v-container fluid>
         <h2 class="display-1 padded"><b>Our location</b></h2>
       <v-layout row wrap>
@@ -10,6 +10,15 @@
       <h2 class="display-1 padded"><b>Contact us</b></h2>
       <v-layout row wrap align-center>
       <v-flex xs12 align-center align-content-center>
+        <v-divider></v-divider>
+        <v-text-field
+          placeholder="Tell us your name"
+          single-line
+          clearable
+          full-width
+          required
+          hide-details>
+        </v-text-field>
         <v-divider></v-divider>
         <v-text-field
           placeholder="Tell us your main e-mail"
