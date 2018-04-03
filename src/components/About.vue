@@ -12,7 +12,7 @@
     </div>
     <div id="about">
       <v-expansion-panel popout>
-        <v-expansion-panel-content hide-actions v-for="(item,i) in itens" :key="i">
+        <v-expansion-panel-content v-for="(item,i) in itens" :key="i" expand-icon="fas fa-angle-down" >
           <div slot="header"><b>{{ item.title }}</b></div>
           <v-card>
             <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
