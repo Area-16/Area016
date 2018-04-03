@@ -36,9 +36,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 img {
-  background-size: 100%;
-  background-position: center center;
+  min-width: 100%;
+  max-height: 100%;
+  object-fit: fill;
 }
 </style>
