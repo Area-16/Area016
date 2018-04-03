@@ -19,32 +19,30 @@
         <router-view></router-view>
       </v-container>
     </section>
-    <footer id="footer">
-      <v-footer dark height="auto">
-      <v-card
-        tile
-        class="grey lighten-2 black--text text-xs-center">
-        <v-card-text>
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            icon
-            :href="icon.link"
-            class="mx-3 black--text">
-            <v-icon size="24px">{{ icon.icon }}</v-icon>
-          </v-btn>
-        </v-card-text>
-        <v-card-text class="black--text pt-0">
-          The best kind of friends are those that enter your life, and help you to see a blue sky where before there was a cloudy sky. They are the ones that have so much faith in you that you start having faith in yourself.  These are the friends we should be grateful for.
-          <v-divider></v-divider>
-          — <strong>DougTQ</strong>
-        </v-card-text>
-        <v-card-text class="black--text">
-          &copy;2018 — <strong>Area016</strong>
-        </v-card-text>
-      </v-card>
+    <v-footer id="footer" dark height="auto">
+      <v-card tile
+      class="grey lighten-2 black--text text-xs-center">
+      <v-card-text>
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          icon
+          :href="icon.link"
+          target=“_blank”
+          class="mx-3 black--text">
+          <v-icon size="24px">{{ icon.icon }}</v-icon>
+        </v-btn>
+      </v-card-text>
+      <v-card-text class="black--text pt-0">
+        The best kind of friends are those that enter your life, and help you to see a blue sky where before there was a cloudy sky. They are the ones that have so much faith in you that you start having faith in yourself.  These are the friends we should be grateful for.
+        <v-divider></v-divider>
+        — <strong>DougTQ</strong>
+      </v-card-text>
+      <v-card-text class="black--text">
+        &copy;2018 — <strong>Area016</strong>
+      </v-card-text>
+    </v-card>
     </v-footer>
-    </footer>
   </v-app>
 </template>
 
@@ -54,25 +52,26 @@ export default {
   data () {
     return {
       title: 'Area016',
-      icons: [{
-        icon: 'fab fa-github',
-        link: 'https://github.com/Area-16'
-      },
-      {
-        icon: 'fab fa-grav'
-      },
-      {
-        icon: 'fab fa-js'
-      },
-      {
-        icon: 'fab fa-linkedin'
-      },
-      {
-        icon: 'fab fa-node-js'
-      },
-      {
-        icon: 'fab fa-npm'
-      }]
+      icons: [
+        {
+          icon: 'fab fa-github',
+          link: 'https://github.com/Area-16'
+        },
+        {
+          icon: 'fab fa-js'
+        },
+        {
+          icon: 'fab fa-linkedin',
+          link: 'https://www.linkedin.com/in/dougtq'
+        },
+        {
+          icon: 'fab fa-npm',
+          link: 'https://npmjs.com/~dougtq'
+        },
+        {
+          icon: 'fab fa-node-js'
+        }
+      ]
     }
   }
 }
