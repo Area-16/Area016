@@ -55,7 +55,7 @@ export default {
       icons: [
         {
           icon: 'fab fa-github',
-          link: 'https://github.com/Area-16'
+          link: 'https://github.com/dougtq'
         },
         // {
         //   icon: 'fab fa-js'
