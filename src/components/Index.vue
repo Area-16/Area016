@@ -21,12 +21,24 @@ export default {
         src: 'http://senpuu.com.br/wp-content/uploads/2013/07/Tetsuo-1.jpg'
       },
       {
-        src: 'https://i.imgur.com/L5SiK3y.png'
-      }]
+        src: 'https://i.ytimg.com/vi/YZ__9f4P3ro/maxresdefault.jpg'
+        //https://i.imgur.com/L5SiK3y.png'
+      },
+      {
+        src: 'https://i.imgur.com/xg48nla.jpg'
+      },
+      {
+        src: 'https://pre00.deviantart.net/9fc3/th/pre/f/2014/260/c/5/godzilla_wallpaper_by_franky4fingersx2-d7zhjfi.jpg'
+      }
+      ]
     }
   }
 }
 </script>
 
 <style scoped>
+img {
+  background-size: 100%;
+  background-position: center center;
+}
 </style>
