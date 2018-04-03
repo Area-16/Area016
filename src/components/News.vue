@@ -14,7 +14,7 @@
         </v-layout>
       </v-container>
     </v-jumbotron>
-    <hr>
+    <v-divider></v-divider>
     <div v-if="news && news.length">
       <div class="newsfeed" :key="i" v-for="(post, i) of news">
       <v-layout>
@@ -33,6 +33,28 @@
       </v-layout>
       </div>
     </div>
+    <div class="text-xs-center">
+      <v-pagination :length="news.length/5" circle total-visible prev-icon="fas fa-angle-left" next-icon="fas fa-angle-right" v-model="post">
+      </v-pagination>
+    </div>
+    <!-- <v-data-iterator
+      content-tag="v-layout"
+      row
+      wrap
+      :items="news"
+      :rows-per-page-items="rowsPerPageItems"
+      :pagination.sync="pagination"
+    >
+      <v-flex
+        slot="item"
+        slot-scope=""
+        xs12
+        sm6
+        md4
+        lg3>
+        
+      </v-flex>
+    </v-data-iterator> -->
   </article>
 </template>
 
@@ -48,9 +70,10 @@ export default {
         title: 'The Wolf of Wall Street',
         src: 'https://i.imgur.com/GWw5umm.jpg'
       },
-      { title: 'Akira retro 18',
+      { 
+        title: 'Akira retro 18',
         description: 'Akira alternative poster!',
-        link: '/post/:akira18',
+        link: '/post/akira18',
         src: 'https://20ui41tp7v127j03rcnp97oh-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/mumford_akira.jpg'
       },
       {
