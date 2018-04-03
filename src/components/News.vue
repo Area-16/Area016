@@ -1,15 +1,14 @@
 <template>
-  <!-- "https://media.gettyimages.com/photos/defocused-blurred-soft-abstract-background-blue-picture-id504916590?b=1&k=6&m=504916590&s=612x612&w=0&h=gbfY6TEors_b0qcYD5f2vuWzZFTSs9kQdxo6NAyIGSg=" -->
   <article>
     <hr>
-    <v-jumbotron src='https://i.imgur.com/L5SiK3y.png'>
+    <v-jumbotron :src="jumbotron">
       <v-container fill-height>
         <v-layout align-center>
           <v-flex>
             <h3 class="display-3"><b>Welcome to Area016</b></h3>
-            <span class="subheading">Lorem ipsum dolor sit amet, pri veniam forensibus id. Vis maluisset molestiae id, ad semper lobortis cum. At impetus detraxit incorrupte usu, repudiare assueverit ex eum, ne nam essent vocent admodum.</span>
+            <span class="subheading"><b>Here's to never leaving</b></span>
             <v-divider class="my-3"></v-divider>
-            <div class="title mb-3"><b>Check out our latest news!</b></div>
+            <div class="title mb-3"><b>Check out our latest drops below!</b></div>
             <v-btn :to="{ name: 'About' }" exact large color="teal" class="mx-0"><b>Read our history</b></v-btn>
           </v-flex>
         </v-layout>
@@ -19,9 +18,9 @@
     <div v-if="news && news.length">
       <div class="newsfeed" :key="i" v-for="(post, i) of news">
       <v-layout>
-        <v-flex xs12 sm8 offset-sm2>
-          <v-card >
-            <v-card-media :src="post.src || 'https://media.gettyimages.com/photos/defocused-blurred-soft-abstract-background-blue-picture-id504916590?b=1&k=6&m=504916590&s=612x612&w=0&h=gbfY6TEors_b0qcYD5f2vuWzZFTSs9kQdxo6NAyIGSg='"  height="400px"></v-card-media>
+        <v-flex xs12 sm10 offset-sm1>
+          <v-card :to="post.link">
+            <v-card-media :src="post.src || 'https://i.imgur.com/Wu85tce.jpg'"  height="400px"></v-card-media>
             <v-divider></v-divider>
             <v-card-title primary-title>
               <div>
@@ -29,10 +28,6 @@
                 <div v-bind="description">{{ post.description || post.body }}</div>
               </div>
             </v-card-title>
-            <v-card-actions>
-              <v-btn color="orange">{{ btn1 }}</v-btn>
-              <v-btn exact color="success">{{ btn2 }}</v-btn>
-            </v-card-actions>
           </v-card>
         </v-flex>
       </v-layout>
@@ -47,6 +42,7 @@ import axios from "axios"
 export default {
   data () {
     return {
+      jumbotron: 'https://pre00.deviantart.net/a0b0/th/pre/f/2015/071/2/8/anime_background___landscape_final_vers__by_jikanpulvis-d8lgiyb.jpg',
       news:
       [{
         title: 'The Wolf of Wall Street',
@@ -59,24 +55,25 @@ export default {
       },
       {
         title: 'Developer Lifestyle',
-        description: '',
-        link: '',
+        link: '/about',
         src: 'https://i.imgur.com/TFMxitb.jpg'
       },
       {
         title: 'Cthulhu',
         link: '',
         src: 'https://i.imgur.com/MvZVeVe.jpg'
+      },
+      {
+        title: 'Beautiful World',
+        src: 'https://images5.alphacoders.com/587/thumb-350-587772.jpg'
       }
-      ],
-      btn1: 'Share',
-      btn2: 'Explore'
+      ]
     }
   },
   created () {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('https://jsonplaceholder.typicode.com/posts/1')
       .then(resp => {
-        this.news = [ ...this.news, ...resp.data]
+        this.news = [ ...this.news ] //, resp.data
       })
       .catch(err => {
         this.errors = [ ...this.err ]
@@ -91,5 +88,11 @@ export default {
 }
 div.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card__media__background {
+  background-size: 100%;
+}
+.jumbotron__image {
+  background-size: 100%;
 }
 </style>
