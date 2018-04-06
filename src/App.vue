@@ -24,8 +24,8 @@
       class="grey lighten-2 black--text text-xs-center">
       <v-card-text>
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          v-for="(icon, index) in icons"
+          :key="index"
           icon
           :href="icon.link"
           target=“_blank”
@@ -57,9 +57,6 @@ export default {
           icon: 'fab fa-github',
           link: 'https://github.com/dougtq'
         },
-        // {
-        //   icon: 'fab fa-js'
-        // },
         {
           icon: 'fab fa-linkedin',
           link: 'https://www.linkedin.com/in/dougtq'
@@ -67,10 +64,7 @@ export default {
         {
           icon: 'fab fa-npm',
           link: 'https://npmjs.com/~dougtq'
-        },
-        // {
-        //   icon: 'fab fa-node-js'
-        // }
+        }
       ]
     }
   }
