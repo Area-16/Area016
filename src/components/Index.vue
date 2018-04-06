@@ -22,7 +22,7 @@ export default {
       },
       {
         src: 'https://i.ytimg.com/vi/YZ__9f4P3ro/maxresdefault.jpg'
-        //https://i.imgur.com/L5SiK3y.png'
+        // https://i.imgur.com/L5SiK3y.png'
       },
       {
         src: 'https://i.imgur.com/xg48nla.jpg'
