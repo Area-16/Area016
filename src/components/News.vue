@@ -43,8 +43,7 @@
       wrap
       :items="news"
       :rows-per-page-items="rowsPerPageItems"
-      :pagination.sync="pagination"
-    >
+      :pagination.sync="pagination">
       <v-flex
         slot="item"
         slot-scope=""
@@ -52,14 +51,13 @@
         sm6
         md4
         lg3>
-        
       </v-flex>
     </v-data-iterator> -->
   </article>
 </template>
 
 <script>
-import axios from "axios"
+import axios from 'axios'
 
 export default {
   data () {
@@ -70,7 +68,7 @@ export default {
         title: 'The Wolf of Wall Street',
         src: 'https://i.imgur.com/GWw5umm.jpg'
       },
-      { 
+      {
         title: 'Akira retro 18',
         description: 'Akira alternative poster!',
         link: '/post/akira18',
