@@ -8,61 +8,112 @@
         </v-flex>
       </v-layout>
       <h2 class="display-1 padded"><b>Contact us</b></h2>
+      <div v-if="completed" :class="result">
+        <h1>{{ feedback }}</h1>
+      </div>
+      <!-- <v-form netlify>  -->
       <v-layout row wrap align-center>
       <v-flex xs12 align-center align-content-center>
         <v-divider></v-divider>
         <v-text-field
+          id="name"
+          v-model="name"
+          @click="check"
           placeholder="Tell us your name"
           single-line
           clearable
           full-width
-          required
           hide-details>
         </v-text-field>
         <v-divider></v-divider>
         <v-text-field
+          id="email"
+          v-model="email"
+          @click="check"
           placeholder="Tell us your main e-mail"
           single-line
           clearable
           full-width
-          required
           hide-details>
         </v-text-field>
         <v-divider></v-divider>
         <v-text-field
+          id="subject"
+          v-model="subject"
+          @click="check"
           placeholder="What subject your message is about?"
           single-line
           max="75"
           clearable
           full-width
-          required
           hide-details>
         </v-text-field>
         <v-divider></v-divider>
         <v-text-field
+          id="message"
+          v-model="message"
+          @click="check"
           placeholder="Finally, here you tell us everything!"
-          v-model="title"
           counter
           clearable
           max="200"
           full-width
-          required
           multi-line
           hide-details>
         </v-text-field>
         <v-divider></v-divider>
       </v-flex>
-        <v-btn block large color="success"><b>Send</b></v-btn>
+        <v-btn block large color="success" @click="submit"><b>Send</b></v-btn>
+    <!-- </v-form> -->
     </v-layout>
     </v-container>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'contact',
+  methods: {
+    submit: function (e) {
+      const { email, name, subject, message } = this
+      this.completed = true
+      this.feedback = 'Sending your message...'
+
+      e.preventDefault();
+      if (!this.email || !this.name || !this.subject || !this.message) {
+        console.log('Empty fields')
+        return
+      }
+      axios.post(this.apiUrl + '/contact', { email, name, subject, message })
+        .then((data) => {
+          // console.log(data)
+          this.feedback = 'Your message was sent successfuly!'
+          this.result = 'succeeded'
+        })
+        .catch((err) => {
+          this.feedback = 'An error ocurred, try again later!'
+          this.result = 'failed'
+        })
+    },
+    check: function (e) {
+      this.completed = false
+      this.feedback = ''
+      this.result = ''
+    }
+  },
   data () {
-    return {}
+    return {
+      apiUrl: 'https://area016.herokuapp.com/api',
+      result: '',
+      completed: false,
+      feedback: '',
+      email: '',
+      name: '',
+      subject: '',
+      message: '',
+    }
   }
 }
 </script>
@@ -88,5 +139,13 @@ button, iframe {
 
 button {
   margin: 20px;
+}
+
+.failed {
+  color: red;
+}
+
+.succeeded {
+  color: green;
 }
 </style>
