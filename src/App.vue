@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <header id="menu">
-      <div class="hidden-sm-and-up">
+      <div class="hidden-md-and-up">
       <v-navigation-drawer v-model="sidebar" app>
         <v-toolbar>
           <v-list>
@@ -33,7 +33,7 @@
         <v-toolbar-items class="hidden-sm-and-down" justify-space-around>
           <v-btn exact flat raised v-for="(page, index) of menu" :key="index" :to="page.route"><v-icon :color="page.color">{{ page.icon }}</v-icon></v-btn>
         </v-toolbar-items>
-        <span class="hidden-sm-and-up">
+        <span class="hidden-md-and-up">
           <v-toolbar-side-icon @click="sidebar = !sidebar"></v-toolbar-side-icon>
         </span>
       </v-toolbar>
