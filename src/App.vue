@@ -1,17 +1,41 @@
 <template>
   <v-app>
     <header id="menu">
+      <div class="hidden-sm-and-up">
+      <v-navigation-drawer v-model="sidebar" app>
+        <v-toolbar>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                {{ title }}
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+        <v-divider></v-divider>
+        <v-list dense class="pt-0">
+        <v-list-tile exact v-for="(page, index) of menu" :key="index" :to="page.route">
+          <v-list-tile-action >
+            <v-icon>{{page.icon}}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content >
+            <v-list-tile-title>{{page.name}}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+      </v-navigation-drawer>
+      </div>
       <v-toolbar color="grey lighten-4 black--text">
         <v-toolbar-title>
           <v-btn :to="{ name: 'Index' }" id="brand-name" color="red"> <v-icon color="black">fas fa-terminal</v-icon><b> {{ title }} </b></v-btn>
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down" justify-space-around>
-          <v-btn exact flat raised :to="{ name: 'Index' }"><v-icon color="green">fas fa-university</v-icon></v-btn>
-          <v-btn exact flat raised :to="{ name: 'News' }"><v-icon  color="blue">far fa-newspaper</v-icon></v-btn>
-          <v-btn exact flat raised :to="{ name: 'About' }"><v-icon color="orange">far fa-id-badge</v-icon></v-btn>
-          <v-btn exact flat raised :to="{ name: 'Findus' }"><v-icon color="teal">far fa-map</v-icon></v-btn>
+          <v-btn exact flat raised v-for="(page, index) of menu" :key="index" :to="page.route"><v-icon :color="page.color">{{ page.icon }}</v-icon></v-btn>
         </v-toolbar-items>
+        <span class="hidden-sm-and-up">
+          <v-toolbar-side-icon @click="sidebar = !sidebar"></v-toolbar-side-icon>
+        </span>
       </v-toolbar>
     </header>
     <section id="content">
@@ -52,6 +76,7 @@ export default {
   data () {
     return {
       title: 'Area016',
+      sidebar: false,
       icons: [
         {
           icon: 'fab fa-github',
@@ -64,6 +89,32 @@ export default {
         {
           icon: 'fab fa-npm',
           link: 'https://npmjs.com/~dougtq'
+        }
+      ],
+      menu: [
+        {
+          icon: 'fas fa-university',
+          name: 'Main',
+          route: { 'name': 'Index' },
+          color: 'green'
+        },
+        {
+          icon: 'far fa-newspaper',
+          name: 'News',
+          route: { name: 'News' },
+          color: 'blue'
+        },
+        {
+          icon: 'far fa-id-badge',
+          name: 'About',
+          route: { name: 'About' },
+          color: 'orange'
+        },
+        {
+          icon: 'far fa-map',
+          name: 'Contact',
+          route: { name: 'Findus' },
+          color: 'teal'
         }
       ]
     }
