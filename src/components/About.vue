@@ -3,7 +3,7 @@
     <div id="presentation">
       <v-layout>
       <v-flex xs12 sm7 offset-sm2>
-        <v-card tile width="700px" img="https://i.imgur.com/AEUAIHH.jpg">
+        <v-card tile width="100%" img="https://i.imgur.com/AEUAIHH.jpg">
           <v-card-media src=""  height="400px"></v-card-media>
         </v-card>
       </v-flex>
