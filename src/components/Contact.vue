@@ -11,61 +11,42 @@
       <div v-if="completed" :class="result">
         <h1>{{ feedback }}</h1>
       </div>
-      <!-- <v-form netlify>  -->
-      <v-layout row wrap align-center>
-      <v-flex xs12 align-center align-content-center>
-        <v-divider></v-divider>
+      <v-form v-model="valid" ref="form">
         <v-text-field
+          label="Name"
           id="name"
           v-model="name"
-          @click="check"
-          placeholder="Tell us your name"
-          single-line
-          clearable
-          full-width
-          hide-details>
-        </v-text-field>
-        <v-divider></v-divider>
+          :rules="nameRules"
+          :counter="50"
+          required
+        ></v-text-field>
         <v-text-field
+          label="E-mail"
           id="email"
           v-model="email"
-          @click="check"
-          placeholder="Tell us your main e-mail"
-          single-line
-          clearable
-          full-width
-          hide-details>
-        </v-text-field>
-        <v-divider></v-divider>
+          :rules="emailRules"
+          required
+        ></v-text-field>
         <v-text-field
+          label="Subject"
           id="subject"
           v-model="subject"
-          @click="check"
-          placeholder="What subject your message is about?"
-          single-line
-          max="75"
-          clearable
-          full-width
-          hide-details>
-        </v-text-field>
-        <v-divider></v-divider>
+          :rules="subjectRules"
+          :counter="50"
+          required
+        ></v-text-field>
         <v-text-field
+          label="Message"
           id="message"
           v-model="message"
-          @click="check"
-          placeholder="Finally, here you tell us everything!"
-          counter
-          clearable
-          max="200"
-          full-width
+          :rules="messageRules"
+          :counter="200"
           multi-line
-          hide-details>
-        </v-text-field>
-        <v-divider></v-divider>
-      </v-flex>
-        <v-btn block large color="success" @click="submit"><b>Send</b></v-btn>
-    <!-- </v-form> -->
-    </v-layout>
+          required
+        ></v-text-field>
+        <v-btn large color="success" :disabled="!valid" @click="submit"><b>Send</b></v-btn>
+        <v-btn large color="warning" @click="clear"><b>Clear</b></v-btn>
+      </v-form>
     </v-container>
   </div>
 </template>
@@ -101,18 +82,27 @@ export default {
       this.completed = false
       this.feedback = ''
       this.result = ''
+    },
+    clear: function () {
+      this.$refs.form.reset()
+      this.completed = false
     }
   },
   data () {
     return {
+      valid: false,
       apiUrl: 'https://area016.herokuapp.com/api',
       result: '',
       completed: false,
       feedback: '',
       email: '',
+      emailRules: [ v => !!v || 'E-mail is required', v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'],
       name: '',
+      nameRules: [ v => !!v || 'Name is required', (r) => r.length <= 50 || 'Maximium length surpassed'],
       subject: '',
+      subjectRules: [v => !!v || 'Subject is required', (r) => r.length <= 50 || 'Maximium length surpassed'],
       message: '',
+      messageRules: [v => !!v || 'Message is required', (r) => r.length <= 200 || 'Maximium length surpassed'],
     }
   }
 }
