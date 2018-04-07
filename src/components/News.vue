@@ -24,8 +24,8 @@
             <v-divider></v-divider>
             <v-card-title primary-title>
               <div>
-                <h3 v-bind="title" class="headline mb-0"><b>{{ post.title }}</b></h3>
-                <div v-bind="description">{{ post.description || post.body }}</div>
+                <h3 class="headline mb-0"><b>{{ post.title }}</b></h3>
+                <div>{{ post.description || post.body }}</div>
               </div>
             </v-card-title>
           </v-card>
@@ -33,10 +33,10 @@
       </v-layout>
       </div>
     </div>
-    <div class="text-xs-center">
-      <v-pagination :length="news.length/5" circle total-visible prev-icon="fas fa-angle-left" next-icon="fas fa-angle-right" v-model="post">
+    <!-- <div class="text-xs-center">
+      <v-pagination :length="news.length/5" circle total-visible prev-icon="fas fa-angle-left" next-icon="fas fa-angle-right" v-model="news">
       </v-pagination>
-    </div>
+    </div> -->
     <!-- <v-data-iterator
       content-tag="v-layout"
       row
