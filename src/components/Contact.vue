@@ -4,7 +4,7 @@
         <h2 class="display-1 padded"><b>Our location</b></h2>
       <v-layout row wrap>
         <v-flex xs12 sm8 offset-sm2>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59434.2179948562!2d-48.53109225079776!3d-21.40412923322414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b9397251c5addf%3A0x42dfab50d8b2929e!2sTaquaritinga%2C+SP%2C+15900-000!5e0!3m2!1spt-BR!2sbr!4v1521840234577" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59434.2179948562!2d-48.53109225079776!3d-21.40412923322414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b9397251c5addf%3A0x42dfab50d8b2929e!2sTaquaritinga%2C+SP%2C+15900-000!5e0!3m2!1spt-BR!2sbr!4v1521840234577" width="100%" height="450px" frameborder="0" style="border:1px" allowfullscreen></iframe>
         </v-flex>
       </v-layout>
       <h2 class="display-1 padded"><b>Contact us</b></h2>
